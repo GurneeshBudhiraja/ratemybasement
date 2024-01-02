@@ -1,0 +1,77 @@
+  
+{% extends 'base.html'%}
+
+{% block title %} Rate My Basement {% endblock title %}
+
+{% block body %}
+<div class="main">
+  <main>
+    <!-- search begins -->
+    <div class="middle-content">
+      <img src="static/images/house5.jpg" alt="background-image" class="house">
+      <div class="credits"><a href="https://www.freepik.com/free-photo/red-vertical-striped-wood-background-texture_1137359.htm#query=house%20background%20red&position=11&from_view=search&track=ais&uuid=20934694-739d-4ce0-bb50-bc4414962b22">Image by alexphotos</a> on Freepik</div>  
+        <div class="on-house">   
+          <h1 class="title">Rate My <span>Basement</span></h1>
+          <h2 class="heading">Search for <span>Reviews</span> Over Here</h2>
+          <!-- form begins -->
+          <form action="/submit" method="POST" autocomplete="off">
+            <div class="search-container">
+              <input type="text" autofocus class="search-bar " required  name="address" placeholder="Type your address, e.g. 145 Main... " id="autocomplete">     
+            </div>
+            <button type="submit" class="submit">Search</button>
+          </form>
+          <!-- form ends -->
+        </div>
+      </div>
+      <!--  search ends -->
+
+
+      <!-- mission section -->
+      <div class="lower">
+        <div class="lower-heading">
+          <h3>For <span>Renters</span>, By a <span>Renter</span></h3>
+          <h4>Our Mission</h4>
+        </div>
+        <div class="features mission-image">
+          <div class="one">
+            <div >
+              <img src="static/images/one.svg" alt="real-tenant-stories">
+            </div>
+            <div class="mission-statement">Find Real Tenant Reviews</div>
+          </div>
+          <div class="two mission-image">
+            <div>
+              <img src="static/images/two.svg" alt="giving-ratings">
+            </div>
+            <div class="mission-statement">Rate Your Rental Unit</div>
+          </div>
+          <div class="three mission-image">
+            <div>  
+              <img src="static/images/three.svg" alt="transparency">
+            </div>  
+            <div class="mission-statement">Enhance Rental Market Transparency</div>
+          </div>
+        </div>
+      </div>
+      <!-- mission section ends --> 
+      <!-- horizontal ruler starts -->
+      <hr class="hr">
+      <!-- horizontal ruler ends -->
+      
+      <div class="cta-banner">
+        <a href="{{ url_for('add') }}">
+          <button class="cta-button">Rate your rental!</button>
+        </a>
+      </div>
+    </main>
+  </div>
+
+{% endblock body %}
+{% block javascript %}
+  <script type="text/javascript">
+    Radar.initialize('{{ api }}');
+    Radar.ui.autocomplete({
+    });
+
+  </script>
+{% endblock javascript %}

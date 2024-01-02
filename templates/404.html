@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="hamburger-menu">
+  <span class="material-symbols-outlined cross">
+    close
+  </span>
+  <div class="links">
+    <a href="{{ url_for('login') }}">Login</a>
+  </div>
+  <div class="links">
+    <a href="{{ url_for('signup') }}">Sign Up</a>
+  </div>
+</div>
+
+<!-- coped from wip.html -->
+<div class="wip-container">
+  <div class="add-nav wip-nav">
+    <div class="left">
+      <a href="/">
+        Rate My <span>Basement</span>
+      </a>
+    </div>
+    <div class="right">
+      <div class="login">
+        <a href="{{ url_for('login') }}">Login</a>
+      </div>  
+      <div class="menu">
+        <span       class="material-symbols-outlined">menu
+        </span>
+      </div>
+      <div class="signup">
+        <a href="{{ url_for('signup') }}">Sign Up</a>
+      </div>
+    </div>
+  </div>
+  <hr class="wip-hr">
+  <div class="wip-main">
+    <img src="/static/images/404.svg" alt="No Data Found">
+    <p>404: Not Found. Try again.</p>
+  </div>
+</div>
+{% endblock body %}
+
+{% block javascript %}
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+{% endblock javascript %}

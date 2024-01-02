@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="hamburger-menu">
+  <span class="material-symbols-outlined cross">
+    close
+  </span>
+  <div class="links">
+    <a href="{{ url_for('login') }}">Login</a>
+  </div>
+  <div class="links">
+    <a href="{{ url_for('signup') }}">Sign Up</a>
+  </div>
+</div>
+
+<div class="add-form-container">
+  <div class="add-nav">
+    <div class="left">
+      <a href="/">
+        Rate My <span>Basement</span>
+      </a>
+    </div>
+    <div class="right">
+      <div class="login">
+        <a href="{{ url_for('login') }}">Login</a>
+      </div>  
+      <div class="menu">
+        <span       class="material-symbols-outlined">menu
+        </span>
+      </div>
+      <div class="signup">
+        <a href="{{ url_for('signup') }}">Sign Up</a>
+      </div>
+    </div>
+  </div><hr>
+  <form action="/new_review" method="POST" autocomplete="off">
+    <div class="form-div">
+        <div>
+          {% if not address%}
+            <input type="address" name="address" placeholder="Type your address" required class="add-address" id="autocomplete" >
+          {% else %}
+            <input type="address" name="address" value="{{ address }}" placeholder="Type your address" required class="add-address" id="autocomplete" >
+          {% endif %}
+        </div>
+        <div class="add-rent-year">
+        <input type="number"  name="rent" min="0" placeholder="Rent Paid (CAD) (Optional)" class="add-rent" step="0.01">
+        <input type="number" name="years" placeholder="How Long Did You Stay There? (in Years) (Optional)" min="0" class="add-years" step="0.1">  
+      </div>
+      
+      <!-- clean -->
+      <div class="cleanliness">
+        <div class="heading">How Clean is this Place?</div>
+        <div class="options">
+          <div>
+            <input type="radio" id="dirty" name="clean" value="dirty">
+            <label for="dirty">Dirty</label>
+          </div>
+          <div>
+            <input type="radio" id="average" name="clean" value="average">
+            <label for="average">Average</label>
+          </div>
+          <div>
+            <input type="radio" id="clean" name="clean" value="clean" required>  
+            <label for="clean">Clean</label>
+          </div>
+        </div>
+      </div>
+      <!-- maintain -->
+      <div class="maintenance">
+        <div>How well maintained is this rental?</div>
+        <div class="options">
+          <div>
+            <input type="radio" required  name="maintain" value="needs improvement" id="needs improvement">
+            <label for="needs improvement">Needs Improvement</label>
+          </div>
+          <div>
+            <input type="radio" name="maintain" value="adequate" id="adequate">
+            <label for="adequate">Adequate</label>
+          </div>
+          <div>  
+            <input type="radio" value="well maintained" name="maintain" id="well maintained">
+            <label for="well maintained">Well Maintained</label>
+          </div>
+        </div>
+      </div>
+      <div class="amenities">
+        <div>What about the amenities here?</div>
+        <div class="options">
+          <div>
+            <input type="radio" name="amenities" required id="lacking" value="lacking">
+            <label for="lacking">Lacking</label>
+          </div>
+          <div>
+            <input type="radio" name="amenities" value="basic" id="basic">
+            <label for="basic">Basic</label>
+          </div>
+          <div>
+            <input type="radio" name="amenities" value="good" id="good">
+            <label for="good">Good</label>
+          </div>
+        </div>
+      </div>
+      <div class="neighbourhood">
+        <p>Neighbourhood Vibe?</p>
+        <div class="options">
+          <div>
+            <input type="radio" name="neighbourhood" id="unfavorable" value="unfavorable" required>
+            <label for="unfavorable">Unfavorable</label>
+          </div>
+          <div>
+            <input type="radio" name="neighbourhood" id="okay" value="okay">
+            <label for="okay">Okay</label>
+          </div>
+          <div>  
+            <input type="radio" name="neighbourhood" id="safe" value="safe">
+            <label for="safe">Safe</label>
+          </div>
+        </div>
+      </div>
+      <textarea name="review" placeholder="Overall Experience (Optional)" cols="50" rows="5" maxlength="150"></textarea>
+    </div>
+    <button class="submit-add" type="submit">Submit</button>
+  </form>
+</div>
+{% endblock body %}
+
+{% block javascript %}
+<script type="text/javascript">
+  Radar.initialize('{{ api }}');
+  Radar.ui.autocomplete({
+  });
+
+</script>
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+{% endblock javascript %}

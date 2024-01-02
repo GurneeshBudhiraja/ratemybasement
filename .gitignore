@@ -1,0 +1,14 @@
+#venv
+.venv
+# Flask session data
+flask_session
+# Instance directory (contains configuration files)
+instance
+# Compiled Python files
+__pycache__
+# Environment file (if you're using it for environment variables)
+.env
+#database
+database.db
+
+

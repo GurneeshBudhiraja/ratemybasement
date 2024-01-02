@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="hamburger-menu">
+  <span class="material-symbols-outlined cross">
+    close
+  </span>
+  <div class="links">
+    <a href="{{ url_for('login') }}">Login</a>
+  </div>
+  <div class="links">
+    <a href="{{ url_for('signup') }}">Sign Up</a>
+  </div>
+</div>
+
+<div class="result-container">
+  <div class="add-nav result-nav">
+    <div class="left">
+      <a href="/">
+        Rate My <span>Basement</span>
+      </a>
+    </div>
+    <div class="right">
+      <div class="login">
+        <a href="{{ url_for('login') }}">Login</a>
+      </div>  
+      <div class="menu"><span       class="material-symbols-outlined">
+        menu
+      </span></div>
+      <div class="signup">
+        <a href="{{ url_for('signup') }}">Sign Up</a>
+      </div>
+    </div>
+  </div>
+  <hr>
+  {% if not input_search %}
+  <div class="not-found">
+    <img src="/static/images/no data found.svg" alt="No Data Found">
+    <p>No Reviews Available</p>
+    <form action="/add" method="POST">
+      <button type="submit">Add a Review</button>      
+    </form>
+  </div>
+  {% else %}
+  <div class="result-else">
+    <p class="p-else">Results for: <span>{{ a }}</span></p>
+    <div class="result-button">
+      <form action="/add" method="POST">
+        <button type="submit" class="button-else">Add a Review &#8594;</button>
+      </form>
+      <a href="{{ url_for('index') }}">
+        <button class="button-else">Search for another Address</button>
+      </a>
+    </div>
+    <div class="result-main">
+      {% for dictionary in input_search %}
+      <div class="result-card">
+        <div class="date">
+          <p>Review Date: <span>{{ dictionary["review_date"] }}</span></p>
+        </div>
+        <div class="rent">
+          {% if not dictionary["rent"] %}
+            <p>Rent: <span>N/A</span></p>
+          {% else %}
+            <p>Rent: <span>{{ dictionary["rent"] }}</span></p>
+          {% endif %}
+        </div>
+        <div class="duration">
+          {% if not dictionary["years"] %}
+            <p>Duration of Stay: <span>N/A</span></p>
+          {% else %}
+            <p>Duration of Stay: <span>{{ dictionary["years"] }}</span></p>
+          {% endif %}
+        </div>
+        <div class="options">
+          <div>
+            <p>Cleanliness: <span>{{ dictionary["clean"] }}</span></p>
+          </div>
+          <div>
+            <p>Maintenance: <span>{{ dictionary["maintain"] }}</span></p>
+          </div>
+          <div>
+            <p>Amenities: <span>{{ dictionary["amenities"] }}</span></p>
+          </div>
+          <div>
+            <p>Neighbourhood: <span>{{ dictionary["neighbourhood"] }}</span></p>
+          </div>
+        </div>
+        <div class="review">
+          <p>Overall Experience:
+            {% if not dictionary["review"] %}
+              <span>N/A</span>
+            {% else %}            
+              <span>{{ dictionary["review"] }}</span>
+            {% endif %}
+          </p>
+        </div>
+        <hr>
+        <div class="feedback">
+          <span class="material-symbols-outlined">thumb_up</span>
+          <p>Like</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <hr class="end-hr">
+  {% endif %}
+</div>
+      
+{% endblock body %}
+
+{% block javascript %}
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+
+{% endblock javascript %}
