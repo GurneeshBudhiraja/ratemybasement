@@ -1,6 +1,6 @@
 
 :root {
-  --text-color: #82181f;
+  --text-color: #ff9800;
   --black: black;
   --white: #fff; 
 }
@@ -10,7 +10,7 @@
           box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 html, body {
@@ -19,10 +19,10 @@ html, body {
   width: 100vw;
   background-color: aliceblue;
 }
-.hr {
-  margin-left: 7vw;
-  margin-right: 7vw;
-  margin-bottom: 2rem;
+/* selection property  */
+::selection {
+  color: var(--text-color);
+  background-color: var(--black);
 }
 .main {
   display: -webkit-box;
@@ -36,8 +36,14 @@ html, body {
   overflow-x: hidden;
 }
 
-
-.middle-content {
+#index-nav {
+  background-color: transparent;
+  background-image: none;
+  position: absolute;
+  top: 0;
+  padding: 2rem 3rem;
+}
+#middle-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -53,18 +59,18 @@ html, body {
   width: 100vw;
   position: relative;
 }
-.credits {
+#credits {
   color: var(--black);
   position:absolute;
   bottom: 0;
   left: 5;
   font-size: 0.6rem;
 }
-.credits a {
+#credits a {
   color: var(--black);
   font-size: 0.6rem;
 }
-.house {
+#bg-image {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -72,131 +78,131 @@ html, body {
   height: 100%;
   width: 100vw;
   border: 0.1rem solid rgba(0, 0, 0, 0.427);
-  -webkit-filter: blur(0.11rem) grayscale(0.1);
-          filter: blur(0.11rem) grayscale(0.1);
+  -webkit-filter: blur(0.1rem);
+          filter: blur(0.1rem);
+  filter: grayscale(0.01rem);
 }
 
-.on-house {
+#on-image {
+  color: var(--white);
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  top: 25%;
+  left: 8%;
+  text-shadow: 0.1rem 0.1rem 0.5rem var(--black);
+  gap: 1.5vw;
+}
+
+#brand-name {
+  font-weight: 700;
+  text-shadow: 0.1rem 0.1rem 0.5rem var(--white);
+  color: var(--black);
+  font-size: 1.5em;
+  transition: all 500ms ease-in-out;
+}
+#brand-name:hover {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--white);
+}
+#index-motto::before {
+  content: "Our Mission: ";
+  font-size: 1.5rem;
+  color: var(--black);
+  font-weight: 600;
+  text-shadow: none;
+}
+
+#buttons-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vw;
+  margin-top: 1em;
+}
+#buttons-index button {
+  height: auto;
+  width: auto;
+  padding: 0.75rem 1.5rem;
+}
+#index-search-review {
+  background-color: #ff990081;
+  color: var(--black);
+  font-weight: 600;
+  /* font-size: 1.2em;  */
+}
+
+#index-form-button {
+  background-color: var(--black);
+  color: var(--text-color);
+  font-weight: 700;
+}
+#index-form-button:hover {
+  background-color: rgba(0, 0, 0, 0.89);
+}
+#on-house {
+  position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vw;
 }
-.title {
-  letter-spacing: 0.5rem;
-  text-align: center;
-  font-size: 5rem;
+#search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90vw;
+  height: auto;
+  gap: 1vw;
+}
+#search-container > h5 {
   color: var(--black);
-  padding: 0.5rem;
-  background-color: #82181f81;
-  border: 0.2rem solid rgba(255, 255, 255, 0.815);
-  -webkit-box-shadow: 0.05rem 0.05rem 1rem rgba(255, 255, 0, 0.747);
-          box-shadow: 0.05rem 0.05rem 1rem rgba(255, 255, 0, 0.747);
+  font-size: 2.5rem;
+  text-wrap:nowrap ;
+  font-weight: 700;
 }
-.title span {
-  color: var(--white);
-}
-.on-house h2 {
-  margin-top: 3rem;
-  text-align: center;
-  color: var(--black);  
-  font-weight: 500;
-  text-wrap: wrap;
-  font-size: 2.85rem;
-  word-spacing: 0.25rem;
-  letter-spacing: 0.1rem;
-}
-
-.on-house h2 span {
-  color: var(--white);
-}
-
-.on-house form {
-  margin-top: 1.15rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 1rem;  
-}
-
-
-.search-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 1rem;
-  padding: 0.5rem;
-  width: 80%;
-}
-
-.search-bar {
-  border: 0.2rem solid rgba(255, 255, 255, 0.815);;
+#search-bar {
+  outline-color:transparent;
+  border: 0.2vw solid var(--black);
   border-radius: 1.2rem;
-  color: var(--white);
-  padding: 0.5rem 1rem;
-  width: 100%;
-  outline-color:transparent;
-  background-color: #82181f81;
-  -webkit-box-shadow: 0.05rem 0.05rem 1rem rgba(255, 255, 0, 0.747);
-          box-shadow: 0.05rem 0.05rem 1rem rgba(255, 255, 0, 0.747);
-
+  color: var(--black);
+  padding: 0.65rem 1rem;
+  width: 70%;
+  background-color: transparent;
+  font-weight: 700;
 }
 
-.submit {
-  font-size: 1.25rem;
-  margin-top: 2rem;
+#submit {
+  font-size: 1.3rem;
+  font-weight: 700;
   outline-color:transparent;
-  border: none;
-  height: 3rem;
+  height: 2.75rem;
   width: 8rem;
-  color: whitesmoke;
-  background-color: #0000009a;
-  border: 0.1rem solid;
+  color: var(--black);
+  background-color: transparent;
+  border: 0.1rem solid black;
   border-radius: 0.5rem;
 }
-
-.submit:hover {
-  background-color: #0c0c0ccf;
-  -webkit-box-shadow: 0.3rem 0.3rem 2rem #0000007b;
-          box-shadow: 0.3rem 0.3rem 2rem #0000007b;
+#submit:hover {
+  background-color: #ff99000c;
+  -webkit-box-shadow: 0.3rem 0.3rem 2rem #ffffffb2;
+          box-shadow: 0.3rem 0.3rem 2rem #ffffffb2;
 }
 
-.submit:active {  
+#submit:active {  
   -webkit-transform: scale(0.95);  
       -ms-transform: scale(0.95);  
           transform: scale(0.95);
 }
 
-.lower {
+#lower {
   margin-top: 10rem;
   color: #040811; 
   display: -webkit-box; 
@@ -208,26 +214,29 @@ html, body {
           flex-direction: column;
   text-align: center;
 }
-
-.lower span {
+#lower span {
   color: var(--text-color);
 }
 
-.lower-heading h3 {
-  font-size: 2rem;
-  font-weight: bold;
+#lower-heading {
+  word-wrap: normal;
+}
+#lower-heading h3 {
+  font-size: 3.5rem;
+  font-weight: 700;
 }
 
-.lower-heading h4 {
-  color: var(--white);  
+#lower-heading h4 {
+  font-size: 2rem;
+  color: var(--black);  
   margin: 1.6rem 0;
   background-color: var(--text-color);
   padding: 0.6rem 0;
+  font-weight: 800;
   letter-spacing: 0.2rem;
-  -webkit-box-shadow: 0.1rem 0.1rem 1rem var(--text-color);
-          box-shadow: 0.1rem 0.1rem 1rem var(--text-color);
+  box-shadow: 0.1rem 0.1rem 2rem var(--black);
 }
-.features {
+#features {
   margin: 3rem 0;
   margin-bottom: 2.5rem;
   display: -webkit-box;
@@ -241,12 +250,9 @@ html, body {
           align-items: center;
   width: 100vw;
 }
-.one, .two, .three{
+.image-container{
   padding: 1rem;
   width: calc(80vw / 3);
-  -webkit-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  transition: all 0.2s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -256,27 +262,25 @@ html, body {
           flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center;
-}
-.one:hover ,.two:hover, .three:hover{
-  cursor: pointer;
-  -webkit-transform: scale(1.04);
-      -ms-transform: scale(1.04);
-          transform: scale(1.04);
+  align-items:center;
 }
 
-.features img {
-  width: 75%;
+.image-container > img {
+  width: 65%;
 }
 
 .mission-statement {
-  color: var(--text-color);
-  margin-top: 2rem;
-  font-weight: 900;
+  color: var(--black);
+  margin-top: 1.5rem;
+  font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: 0.1rem;
 }
-.cta-banner {
+#index-hr {
+  margin:0 5rem 2rem 5rem;
+}
+
+#cta-banner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -285,10 +289,10 @@ html, body {
           justify-content: center;
   margin-bottom: 5rem;
 } 
-.cta-banner a {
+#cta-banner a {
   text-decoration: none;
 }
-.cta-button {
+#cta-button {
   font-weight: 500;
   word-spacing: 0.02rem;
   letter-spacing: 0.05rem;
@@ -319,7 +323,7 @@ html, body {
   color 25ms ease, transform 50ms ease, 
   -webkit-transform 50ms ease;
 }
-.cta-button:hover {
+#cta-button:hover {
   background-color: var(--text-color);
   color: var(--white);
   -webkit-transform: scale(1.05);
@@ -557,7 +561,7 @@ html, body {
 /* nav bar for add.html*/
 
 .add-nav {
-  width: 90vw;
+  width: 100vw;
   height: 6vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -887,58 +891,62 @@ form {
 /* responsive */
 @media only screen and (max-width:700px) {
 /* ++++++++++ index.html ++++++++++ */
+#index-nav {
+  padding: 2.5rem 1.2rem;
+}
 .credits, .credits a {
   font-size: 0.4rem;
 }
-
-.title {
-  margin-top: 20%;
-  letter-spacing: 0.2rem;
-  /* text-wrap: nowrap; */
-  font-size: 8vh;
+#bg-image {
+  height: 100%;
+}
+#on-image h2 {
+  font-size: 1.5rem;
+}
+#brand-name {
+  display: block;
+  font-size: 1.25em;
+}
+#index-motto::before {
+  content: "";
+}
+#buttons-index {
+  gap: 1.75vw;
+}
+#buttons-index button {
+  padding: 0.5rem 0.5rem;
+}
+#index-search-review {
+  font-size: 1em;
+  background-color: #ff9900;
+}
+#on-house {
+  margin-top: 3rem;
 }
 
-.on-house h2 {
-  font-size: 5vh;
-  word-spacing: 0.09rem;
+
+#search-container > h5 {
+  font-size: 1.15rem;
+  text-wrap:wrap ;
+  text-align: center;
+  font-weight: 700;
 }
 
-.on-house h2 span {
-  -webkit-text-decoration-style:wavy;
-          text-decoration-style:wavy;
-  -webkit-text-decoration-color: var(--black);
-          text-decoration-color: var(--black);
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
-}
-
-.on-house form {
-  gap: 0rem;  
-}
-
-.search-container {
+#search-bar {
   width: 100%;
-}
-
-.search-bar {
   border-radius: 1.1rem;
   padding: 0.5rem 0.8rem;
 }
 
-.submit {
+#submit {
   font-size: 1rem;
-  margin-top: 0.2rem;
+  margin-top: 1rem;
   height: 2.2rem;
   width: 5.2rem;
+  color: var(--white);
 }
 
-.submit:active {  
-  -webkit-transform: scale(0.95);  
-      -ms-transform: scale(0.95);  
-          transform: scale(0.95);
-}
-
-.lower {
+#lower {
   margin-top: 2.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -952,55 +960,45 @@ form {
           align-items: center;
 }
 
-.lower-heading h3 {
+#lower-heading h3 {
   font-size: 1.8rem;
 }
-.lower-heading h4 {
+#lower-heading h4 {
   width: 100vw;
   font-size: 1.25rem;
 }
 
-.features {
-  margin: 2rem 0;
+#features {
+  margin: 1.25rem 0;
   margin-bottom: 2.5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;  
-  -webkit-box-align: center;  
-      -ms-flex-align: center;  
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 95vw;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5rem;
   gap: 0.7rem;
 }
-.one, .two, .three{
-  width: 100%;
-  border: 0.15rem solid var(--text-color);
-  
+.image-container{
+  width: 100%;  
 }
 
-.features img {
+.image-container > img {
   -webkit-filter: drop-shadow(0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.781));
           filter: drop-shadow(0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.781));
   width: 80%;
 }
 
 .mission-statement {
+  text-align: center;
   margin-top: 1rem;
   font-size: 1.15rem;
   letter-spacing: 0.05rem;
 }
-.cta-banner {
+#cta-banner {
   margin-bottom: 3rem;
 } 
 
-.cta-button {
+#cta-button {
   font-weight: 700;
   background-color: transparent;
   border: 0.2rem solid var(--text-color);

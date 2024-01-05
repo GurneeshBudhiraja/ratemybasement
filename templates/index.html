@@ -1,77 +1,101 @@
-  
+
 {% extends 'base.html'%}
 
 {% block title %} Rate My Basement {% endblock title %}
 
 {% block body %}
-<div class="main">
-  <main>
-    <!-- search begins -->
-    <div class="middle-content">
-      <img src="static/images/house5.jpg" alt="background-image" class="house">
-      <div class="credits"><a href="https://www.freepik.com/free-photo/red-vertical-striped-wood-background-texture_1137359.htm#query=house%20background%20red&position=11&from_view=search&track=ais&uuid=20934694-739d-4ce0-bb50-bc4414962b22">Image by alexphotos</a> on Freepik</div>  
-        <div class="on-house">   
-          <h1 class="title">Rate My <span>Basement</span></h1>
-          <h2 class="heading">Search for <span>Rental Reviews</span> Over Here</h2>
-          <!-- form begins -->
-          <form action="/submit" method="POST" autocomplete="off">
-            <div class="search-container">
-              <input type="text" autofocus class="search-bar " required  name="address" placeholder="Type your address, e.g. 145 Main... " id="autocomplete">     
-            </div>
-            <button type="submit" class="submit">Search</button>
-          </form>
-          <!-- form ends -->
-        </div>
-      </div>
-      <!--  search ends -->
 
-
-      <!-- mission section -->
-      <div class="lower">
-        <div class="lower-heading">
-          <h3>For <span>Renters</span>, By a <span>Renter</span></h3>
-          <h4>Our Mission</h4>
+<main>
+  <div id="middle-content">
+    <img src="/static/images/yellowbg.jpg" alt="background image" id="bg-image">
+    <div id="on-image">
+      <h2>Welcome to <span id="brand-name">Rate My Basement</span></h2>
+      <div id="typing-text">
+        <h2 id="index-motto"></h2>
+      </div>
+      <div id="buttons-index">
+        <button id="index-search-review">Search for a Review</button>
+        <form action="/add" method="post">
+          <button id="index-form-button">Add a Review &#8594</button>
+        </form>
+      </div>
+    </div>
+    <div id="on-house">
+      <form action="submit" method="POST" autocomplete="off">
+        <div id="search-container">
+          <h5>Search for Rental Reviews Over Here</h5>
+          <input type="address" name="address" autofocus placeholder="Type your address" required id="search-bar" id="autocomplete">
+          <button id="submit">Submit</button>
+        </div>  
+      </form>
+    </div>
+    <div id="credits">
+      <a href="https://www.freepik.com/free-photo/yellow-light-background-with-sunset-projector-lamp_16010725.htm#page=3&query=yellow%20room%20background&position=4&from_view=search&track=ais&uuid=94017c7f-fe65-4a1d-b20a-0e2e64973699">Image by rawpixel.com</a> on Freepik
+    </div>
+    <nav>
+      <div class="hamburger-menu">
+        <span class="material-symbols-outlined cross">
+        close
+        </span>
+        <div class="links">
+        <a href="{{ url_for('login') }}">Login</a>
+      </div>
+        <div class="links">
+        <a href="{{ url_for('signup') }}">Sign Up</a>
         </div>
-        <div class="features mission-image">
-          <div class="one">
-            <div >
-              <img src="static/images/one.svg" alt="real-tenant-stories">
-            </div>
-            <div class="mission-statement">Find Real Tenant Reviews</div>
+      </div>  
+      <div class="add-nav" id="index-nav">
+        <div class="left"></div>
+        <div class="right">
+          <div class="login">
+          <a href="{{ url_for('login') }}">Login</a>
           </div>
-          <div class="two mission-image">
-            <div>
-              <img src="static/images/two.svg" alt="giving-ratings">
-            </div>
-            <div class="mission-statement">Rate Your Rental Unit</div>
+          <div class="menu">
+            <span class="material-symbols-outlined">menu</span>
           </div>
-          <div class="three mission-image">
-            <div>  
-              <img src="static/images/three.svg" alt="transparency">
-            </div>  
-            <div class="mission-statement">Enhance Rental Market Transparency</div>
+          <div class="signup">
+            <a href="{{ url_for('signup') }}">Sign Up</a>
           </div>
         </div>
       </div>
-      <!-- mission section ends --> 
-      <!-- horizontal ruler starts -->
-      <hr class="hr">
-      <!-- horizontal ruler ends -->
-      
-      <div class="cta-banner">
-        <a href="{{ url_for('add') }}">
-          <button class="cta-button">Rate your rental!</button>
-        </a>
-      </div>
-    </main>
+    </nav>
+  </div> 
+    <!--middle content ends -->
+  <div id="lower">
+    <div id="lower-heading">
+      <h3>For <span>Renters</span>, By a <span>Renter</span></h3>
+      <h4 >Our Mission</h4>
+    </div>
   </div>
+  <div id="features">
+    <div class="image-container">
+      <img src="/static/images/find-reviews.svg" alt="reading tenant reviews">
+      <p class="mission-statement">Find Real Tenant Reviews</p>
+    </div>
+    <div class="image-container">
+      <img src="/static/images/rate-house.svg" alt="rating the rental">
+      <p class="mission-statement">Rate Your Rental Unit</p>
+    </div>
+    <div class="image-container">
+      <img src="/static/images/house-search.svg" alt="analyzing the rental">
+      <p class="mission-statement">Enhance Rental Market Transparency</p>
+    </div>
+  </div>
+  <hr id="index-hr">
+  <div id="cta-banner">
+    <form action="/add" method="POST">
+      <button id="cta-button">Rate your rental!</button>
+    </form>
+  </div>
+</main>
 
 {% endblock body %}
 {% block javascript %}
-  <script type="text/javascript">
-    Radar.initialize('{{ api }}');
-    Radar.ui.autocomplete({
-    });
-
-  </script>
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+<script type="text/javascript">
+  Radar.initialize('{{ api }}');
+  Radar.ui.autocomplete({
+  });
+  
+</script>
 {% endblock javascript %}
