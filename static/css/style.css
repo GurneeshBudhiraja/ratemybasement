@@ -367,16 +367,16 @@ html, body {
 }
 
 .not-found img {
-  -webkit-filter: drop-shadow(0.1rem 0.1rem 0.4rem #000000a6);
-          filter: drop-shadow(0.1rem 0.1rem 0.4rem #000000a6);
+  -webkit-filter: drop-shadow(0.1rem 0.1rem 0.2rem #000000a6);
+          filter: drop-shadow(0.1rem 0.1rem 0.2rem #000000a6);
   height: 32%;
   width: 32%;
 }
 .not-found p {
   font-size: 2.6rem;
   color: var(--text-color);
-  font-weight: 500;
-  text-shadow: 0.1rem 0.1rem 0.4rem #000000a6;
+  font-weight: 700;
+  text-shadow: 0.08rem 0.08rem 0.1rem #000000a6;
 }
 .not-found button {
   margin-top: 0.2rem;
@@ -412,7 +412,7 @@ html, body {
 }
 .not-found button:hover {
   background-color: var(--text-color);
-  color: var(--white);
+  color: var(--black);
   -webkit-transform: scale(1.05);
       -ms-transform: scale(1.05);
           transform: scale(1.05);
@@ -447,6 +447,7 @@ html, body {
   font-size: 1.4rem;
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
+  text-decoration-style: wavy;
   -webkit-text-decoration-color: var(--text-color);
           text-decoration-color: var(--text-color);
 }
@@ -454,15 +455,15 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-wrap:wrap;
   gap: 1rem;
 }
 .button-else {
   margin-bottom: 1rem;
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0.4rem 0.8rem;
-  border: 0.2rem solid var(--text-color);
-  background-color:transparent;
+  background-color:var(--text-color);
   -webkit-transition: all 100ms ease-in-out;
   -o-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
@@ -473,8 +474,11 @@ html, body {
           transform: scale(1.04);
   -webkit-box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.664);
           box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.664);
-  background-color: var(--text-color);
-  color: var(--white);
+}
+#search-another {
+  background-color: transparent;
+  border: 0.1vh solid var(--text-color);
+  font-weight: 600;
 }
 .result-main {
   display: -webkit-box;
@@ -489,9 +493,12 @@ html, body {
       flex-wrap: wrap;
 }
 
+.result-card hr {
+  width: 100%;
+}
 
 .result-card {
-  border: 0.4rem solid var(--text-color);
+  border: 0.2vh solid var(--black);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -522,26 +529,25 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-weight: 600;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.result-card hr {
-  width: 100%;
-}
 .result-card span {
   font-weight: 700;
-  color: var(--text-color);
+  color: var(--black);
 }
 .feedback {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
+  -ms-flex-pack: end;
           justify-content: flex-end;
-  gap: 0rem;
+          gap: 0rem;
+  margin-left: 0.5vh;
 }
 /* thumbs up */
 .material-symbols-outlined {
@@ -561,7 +567,7 @@ html, body {
 /* nav bar for add.html*/
 
 .add-nav {
-  width: 100vw;
+  width: 90vw;
   height: 6vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -574,20 +580,19 @@ html, body {
           align-items: center;
   font-size: 1.3rem;
   padding: 2rem 1rem;
-  background-image: -o-linear-gradient(top, var(--text-color), #82181f9c);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--text-color)), to(#82181f9c));
-  background-image: linear-gradient(to bottom, var(--text-color), #82181f9c);
+  background-image: linear-gradient(to top, #ff9900, #ff990063);
 }
 .add-nav a {
   text-decoration: none;
+  font-weight: 600;
   color: var(--white);
 }
 
 .add-nav .left a{
   font-size: 2.5rem;
-  text-shadow:0.05rem 0.05rem 1rem rgba(255, 255, 255, 0.658);
+  
   color: var(--black);
-  font-weight: 500;
+  font-weight: 700;
 }
 .add-nav .left {
   padding: 0.1rem 0.25rem;
@@ -653,19 +658,19 @@ html, body {
           flex-direction: column;
   gap: 1.5em;
   margin: 2rem 2rem;
+
 }
 .add-address{
   font-size: 1rem;
   font-weight: 500;
   border: 0.1rem solid var(--black);
   border-radius: 0.2rem;
-  color: var(--text-color);
+  color: var(--black);
   padding: 0.9rem 1rem;
   outline-color: transparent;
   width: 100%;
   background-color: transparent;
-  -webkit-box-shadow: 0.05rem 0.05rem 1.5rem #000000b6;
-          box-shadow: 0.05rem 0.05rem 1.5rem #000000b6;
+  box-shadow: 0.05rem 0.05rem 0.1rem #000000b6;
 }
 .add-rent-year {
   width: 100%;
@@ -689,9 +694,8 @@ html, body {
   padding: 0.9rem 1rem;
   width: 100%;
   border-radius: 0.2rem;
-  color: var(--text-color);
-  -webkit-box-shadow: 0.05rem 0.05rem 1.5rem #000000b6;
-          box-shadow: 0.05rem 0.05rem 1.5rem #000000b6;
+  color: var(--black);
+  box-shadow: 0.05rem 0.05rem 0.1rem #000000b6;
   font-weight: 500;
 }
 .cleanliness,.maintenance,.amenities, .neighbourhood{
@@ -699,15 +703,15 @@ html, body {
   display: -ms-flexbox;
   display: flex;
   outline-color:transparent;
+  justify-content: space-evenly;
   font-size: 1rem;
   border: 0.1rem solid var(--black);
   background-color: transparent;
   padding: 1rem 1.1rem;
   border-radius: 0.2rem;
-  -webkit-box-shadow: 0.05rem 0.05rem 1.5rem #000000b6;
-          box-shadow: 0.05rem 0.05rem 1.5rem #000000b6;
+  box-shadow: 0.05rem 0.05rem 0.1rem #000000b6;
   gap: 5vh;
-  font-weight: 500;
+  font-weight: 600;
 }
 .cleanliness .options, .maintenance .options,.amenities .options, .neighbourhood .options{
   display: -webkit-box;
@@ -717,6 +721,7 @@ html, body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  font-weight: 600;
 }
 .options div{
   font-size: 1.1rem;
@@ -730,14 +735,13 @@ html, body {
 }
 
 .options label {
-  
   text-align: start;
   position: relative;
   cursor: pointer;
-  border: 0.1rem solid var(--black);
+  border: 0.15rem solid var(--text-color);
   margin: 0.2rem 0;
   padding: 0.2rem 0.5rem;
-  color: var(--text-color);
+  color: var(--black);
 }
 
 .options label:before {
@@ -748,7 +752,7 @@ html, body {
   margin-right: 0.5rem;
   height: 1rem;
   width: 1rem;
-  border: 0.1rem solid black;
+  border: 0.1rem solid black; 
   border-radius: 50%;
 }
 input[type="radio"]:checked + label:before {
@@ -757,7 +761,7 @@ input[type="radio"]:checked + label:before {
   border: 0.2rem solid var(--white);
 }
 input[type="radio"]:checked + label {
-  background-color: var(--text-color);
+  background-color: #000000e5;
   color: var(--white);
 }
 
@@ -769,9 +773,9 @@ input[type="radio"]:checked + label {
   padding: 0.9rem 1rem;
   width: 100%;
   border-radius: 0.2rem;
-  color: var(--text-color);
-  -webkit-box-shadow: 0.05rem 0.05rem 1.5rem #000000b6;
-          box-shadow: 0.05rem 0.05rem 1.5rem #000000b6;
+  color: var(--black);
+  box-shadow: 0.05rem 0.05rem 0.1rem #000000b6;
+
   font-weight: 500;
 }
 form {
@@ -791,7 +795,7 @@ form {
   gap: 2rem;  
 }
 .submit-add {
-  font-weight: 500;
+  font-weight: 700;
   word-spacing: 0.02rem;
   letter-spacing: 0.05rem;
   display: -webkit-box;
@@ -805,10 +809,10 @@ form {
           align-items: center;
   color: var(--black);
   background-color: transparent;
-  border: 0.2rem solid var(--text-color);
+  border: 0.1rem solid var(--text-color);
   border-radius: 1.25rem;
   height: 2.75rem;  
-  padding: 1rem;
+  padding: 0.8rem;
   -webkit-transition: background-color 50ms ease, 
   color 25ms ease, -webkit-transform 50ms ease;
   transition: background-color 50ms ease, 
@@ -821,11 +825,11 @@ form {
   color 25ms ease, transform 50ms ease, 
   -webkit-transform 50ms ease;
   margin-top: -4vh;
-  margin-bottom: 2vh;
+  margin-bottom: 1.5rem;
 }
 .submit-add:hover {
   background-color: var(--text-color);
-  color: var(--white);
+  /* color: var(--white); */
   -webkit-transform: scale(1.05);
       -ms-transform: scale(1.05);
           transform: scale(1.05);
@@ -1033,11 +1037,9 @@ form {
 .add-nav .left a{
   font-size: 1.25rem;
   text-wrap: nowrap;
-  font-weight: 600;
+  font-weight: 700;
 }
-.add-nav span {
-  color: var(--white);
-}
+
 .add-nav .right {
   padding: 0 1rem;
 }
@@ -1070,23 +1072,13 @@ form {
 }
 .not-found p {
   font-size: 2rem;
-  text-shadow: 0.1rem 0.1rem 0.4rem #00000080;
+  /* text-shadow: 0.1rem 0.1rem 0.4rem #00000080; */
 }
 .not-found button {
-  margin-top: 1vh;
   font-weight: 700;
   border: 0.2rem solid var(--text-color);
   border-radius: 1.25rem;
   padding: 1rem;
-}
-.not-found button:hover {
-  background-color: var(--text-color);
-  color: var(--white);
-  -webkit-transform: scale(1.05);
-      -ms-transform: scale(1.05);
-          transform: scale(1.05);
-  -webkit-box-shadow: 0.25rem 0.25rem 2rem rgba(0, 0, 0, 0.582);
-          box-shadow: 0.25rem 0.25rem 2rem rgba(0, 0, 0, 0.582);
 }
 .result-else {
   margin: 1.5vh;
@@ -1096,24 +1088,15 @@ form {
   font-size: 1rem;
 }
 .p-else span{
-  font-weight: 500;
   font-size: 1.1rem;
 }
 .result-button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   gap: 0.5rem;
 }
 .button-else {
-  color: var(--text-color);
   font-size: 0.9rem;
-  font-weight: 700;
   padding: 0.4rem 0.45rem;
-  border: 0.15rem solid var(--text-color);
 }
-
-
 .result-main {
   height: auto;
   width: auto;
@@ -1132,38 +1115,25 @@ form {
 }
 
 .result-card {
-  border: 0.18rem solid var(--text-color);
-  width: 88vw;
-  height: auto;
-  padding: 1rem 2rem;
+  /* border: 0.18rem solid var(--text-color); */
   font-size: 1rem;
 }
-.result-card span {
-  font-weight: 700;
-  color: var(--text-color);
-}
-.result-card:hover{
-  -webkit-transform: scale(1,1);
-      -ms-transform: scale(1,1);
-          transform: scale(1,1);
+.result-card:hover {
+  transform: none;
 }
 
 /* +++++++++result.html ends++++++++++++++++++ */
 
 /* +++++++++++ add.html ++++++++++++ */
-
 .add-form-container{
   width: 100%;
-  /* flex-direction: column; */
   padding: 0;
   margin: 0;
 }
 .add-form-container hr {
   display: none;
 }
-.form-div {
-  width: 95%;
-}
+
 .add-address{
   padding: 0.7rem 0.5rem;
 }

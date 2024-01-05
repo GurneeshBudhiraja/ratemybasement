@@ -45,12 +45,12 @@
   <div class="result-else">
     <p class="p-else">Results for: <span>{{ a }}</span></p>
     <div class="result-button">
+      <a href="{{ url_for('index') }}">
+        <button id="search-another" class="button-else">Try Another Address</button>
+      </a>
       <form action="/add" method="POST">
         <button type="submit" class="button-else">Add a Review &#8594;</button>
       </form>
-      <a href="{{ url_for('index') }}">
-        <button class="button-else">Search for another Address</button>
-      </a>
     </div>
     <div class="result-main">
       {% for dictionary in input_search %}
