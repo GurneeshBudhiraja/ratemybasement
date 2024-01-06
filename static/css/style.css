@@ -498,6 +498,7 @@ html, body {
   gap: 1rem;
 }
 .button-else {
+  color: var(--black);
   margin-bottom: 1rem;
   font-size: 1.1rem;
   font-weight: 700;
