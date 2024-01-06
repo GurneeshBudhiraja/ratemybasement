@@ -198,6 +198,7 @@ def method_not_allowed(error):
     return redirect("/")
 
 
+
 if __name__ == "__main__":
     command = "gunicorn -w 4 -b 0.0.0.0:5500 -t 60 your_app_module:app"
     app.run(debug=True)

@@ -14,7 +14,7 @@
     <a href="{{ url_for('signup') }}">Sign Up</a>
   </div>
 </div>
-<div class="add-form-container">
+<div id="add-form-container">
   <div class="add-nav">
     <div class="left">
       <a href="/">
@@ -35,7 +35,7 @@
     </div>
   </div><hr>
   <form action="/new_review" method="POST" autocomplete="off">
-    <div class="form-div">
+    <div id="form-div">
         <div>
           {% if not address%}
             <input type="address" name="address" placeholder="Type your address" required class="add-address" id="autocomplete" >
@@ -43,9 +43,9 @@
             <input type="address" name="address" value="{{ address }}" placeholder="Type your address" required class="add-address" id="autocomplete" >
           {% endif %}
         </div>
-        <div class="add-rent-year">
-          <input type="number"  name="rent" min="0" placeholder="Rent Paid (CAD) (Optional)" class="add-rent" step="0.01">
-          <input type="number" name="years" placeholder="Stay Duration in Years (Optional)" min="0" class="add-years" step="0.1">  
+        <div id="add-rent-year">
+          <input type="number"  name="rent" min="0" placeholder="Rent Paid (CAD) (Optional)" id="add-rent" step="0.01">
+          <input type="number" name="years" placeholder="Stay Duration in Years (Optional)" min="0" id="add-years" step="0.1">  
         </div>
       <!-- clean -->
       <div class="cleanliness">
@@ -67,7 +67,7 @@
       </div>
       <!-- maintain -->
       <div class="maintenance">
-        <div>How well maintained is this rental?</div>
+        <div class="heading">How well maintained is this rental?</div>
         <div class="options">
           <div>
             <input type="radio" required  name="maintain" value="needs improvement" id="needs improvement">
@@ -84,7 +84,7 @@
         </div>
       </div>
       <div class="amenities">
-        <div>What about the amenities here?</div>
+        <div class="heading">What about the amenities here?</div>
         <div class="options">
           <div>
             <input type="radio" name="amenities" required id="lacking" value="lacking">
@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="neighbourhood">
-        <p>Neighbourhood Vibe?</p>
+        <p class="heading">Neighbourhood Vibe?</p>
         <div class="options">
           <div>
             <input type="radio" name="neighbourhood" id="unfavorable" value="unfavorable" required>
@@ -119,7 +119,7 @@
       </div>
       <textarea name="review" placeholder="Overall Experience (Optional)" cols="50" rows="5" maxlength="150"></textarea>
     </div>
-    <button class="submit-add" type="submit">Submit</button>
+    <button id="submit-add" type="submit">Submit</button>
   </form>
 </div>
 {% endblock body %}

@@ -168,7 +168,7 @@ html, body {
   text-wrap:nowrap ;
   font-weight: 700;
 }
-#search-bar {
+.search-bar {
   outline-color:transparent;
   border: 0.2vw solid var(--black);
   border-radius: 1.2rem;
@@ -347,7 +347,7 @@ html, body {
 
 /* nav bar ends */
 
-.not-found {
+#not-found {
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -366,19 +366,19 @@ html, body {
           align-items: center;
 }
 
-.not-found img {
+#not-found img {
   -webkit-filter: drop-shadow(0.1rem 0.1rem 0.2rem #000000a6);
           filter: drop-shadow(0.1rem 0.1rem 0.2rem #000000a6);
   height: 32%;
   width: 32%;
 }
-.not-found p {
+#not-found p {
   font-size: 2.6rem;
   color: var(--text-color);
   font-weight: 700;
   text-shadow: 0.08rem 0.08rem 0.1rem #000000a6;
 }
-.not-found button {
+#not-found button {
   margin-top: 0.2rem;
   font-weight: 500;
   word-spacing: 0.02rem;
@@ -410,7 +410,7 @@ html, body {
   color 25ms ease, transform 50ms ease, 
   -webkit-transform 50ms ease;
 }
-.not-found button:hover {
+#not-found button:hover {
   background-color: var(--text-color);
   color: var(--black);
   -webkit-transform: scale(1.05);
@@ -419,11 +419,11 @@ html, body {
   -webkit-box-shadow: 0.25rem 0.25rem 2rem rgba(0, 0, 0, 0.582);
           box-shadow: 0.25rem 0.25rem 2rem rgba(0, 0, 0, 0.582);
 }
-.not-found a {
+#not-found a {
   text-decoration: none;
 }
 /* results */
-.result-else {
+#result-else {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -438,11 +438,11 @@ html, body {
       flex-wrap: wrap;
 }
 
-.p-else{
+#p-else{
   font-size: 1.2rem;
   font-weight: 500;
 }
-.p-else span{
+#p-else span{
   font-weight: 700;
   font-size: 1.4rem;
   -webkit-text-decoration-line: underline;
@@ -451,7 +451,7 @@ html, body {
   -webkit-text-decoration-color: var(--text-color);
           text-decoration-color: var(--text-color);
 }
-.result-button {
+#result-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -480,7 +480,7 @@ html, body {
   border: 0.1vh solid var(--text-color);
   font-weight: 600;
 }
-.result-main {
+#result-main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -493,11 +493,11 @@ html, body {
       flex-wrap: wrap;
 }
 
-.result-card hr {
+#result-card hr {
   width: 100%;
 }
 
-.result-card {
+#result-card {
   border: 0.2vh solid var(--black);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -517,7 +517,7 @@ html, body {
   height: auto;
   overflow: scroll;
 }
-.result-card:hover {
+#result-card:hover {
   -webkit-transform: scale(1.01);
       -ms-transform: scale(1.01);
           transform: scale(1.01);
@@ -525,7 +525,7 @@ html, body {
           box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.664);
   cursor: pointer;
 }
-.result-card div {
+#result-card div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -535,11 +535,11 @@ html, body {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.result-card span {
+#result-card span {
   font-weight: 700;
   color: var(--black);
 }
-.feedback {
+#feedback {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -559,7 +559,7 @@ html, body {
   'opsz' 24
 }
 
-.end-hr {
+#end-hr {
   margin: 4rem 0;
 }
 /* result html ends */
@@ -628,7 +628,7 @@ html, body {
 /* nav bar ends */
 
 
-.add-form-container{
+#add-form-container{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -643,10 +643,10 @@ html, body {
   padding: 0.5rem;
   margin: 0rem 2rem;
 }
-.add-form-container hr {
+#add-form-container hr {
   width: 90vw;
 }
-.form-div {
+#form-div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -671,7 +671,7 @@ html, body {
   background-color: transparent;
   box-shadow: 0.05rem 0.05rem 0.1rem #000000b6;
 }
-.add-rent-year {
+#add-rent-year {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -685,7 +685,7 @@ html, body {
           align-items: start;
   gap: 1.5rem;
 }
-.add-rent-year input {
+#add-rent-year input {
   outline-color:transparent;
   font-size: 1rem;
   border: 0.1rem solid var(--black);
@@ -764,7 +764,7 @@ input[type="radio"]:checked + label {
   color: var(--white);
 }
 
-.form-div textarea {
+#form-div textarea {
   outline-color:transparent;
   font-size: 1rem;
   border: 0.1rem solid var(--black);
@@ -793,7 +793,7 @@ form {
           justify-content: center;
   gap: 2rem;  
 }
-.submit-add {
+#submit-add {
   font-weight: 700;
   word-spacing: 0.02rem;
   letter-spacing: 0.05rem;
@@ -826,7 +826,7 @@ form {
   margin-top: -4vh;
   margin-bottom: 1.5rem;
 }
-.submit-add:hover {
+#submit-add:hover {
   background-color: var(--text-color);
   /* color: var(--white); */
   -webkit-transform: scale(1.05);
@@ -935,7 +935,7 @@ form {
   font-weight: 700;
 }
 
-#search-bar {
+.search-bar {
   width: 100%;
   border-radius: 1.1rem;
   padding: 0.5rem 0.8rem;
@@ -1053,7 +1053,7 @@ form {
 .result-container hr {
   display: none;
 }
-.not-found {
+#not-found {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1065,38 +1065,38 @@ form {
   margin: 10vh;
 }
 
-.not-found img {
+#not-found img {
   height: 75%;
   width: 75%;
 }
-.not-found p {
+#not-found p {
   font-size: 2rem;
   /* text-shadow: 0.1rem 0.1rem 0.4rem #00000080; */
 }
-.not-found button {
+#not-found button {
   font-weight: 700;
   border: 0.2rem solid var(--text-color);
   border-radius: 1.25rem;
   padding: 1rem;
 }
-.result-else {
+#result-else {
   margin: 1.5vh;
   padding: 1vh;
 }
-.p-else{
+#p-else{
   font-size: 1rem;
 }
-.p-else span{
+#p-else span{
   font-size: 1.1rem;
 }
-.result-button {
+#result-button {
   gap: 0.5rem;
 }
 .button-else {
   font-size: 0.9rem;
   padding: 0.4rem 0.45rem;
 }
-.result-main {
+#result-main {
   height: auto;
   width: auto;
   display: -webkit-box;
@@ -1113,23 +1113,24 @@ form {
   overflow: scroll;
 }
 
-.result-card {
+#result-card {
   /* border: 0.18rem solid var(--text-color); */
   font-size: 1rem;
 }
-.result-card:hover {
+#result-card:hover {
   transform: none;
+  box-shadow: none;
 }
 
 /* +++++++++result.html ends++++++++++++++++++ */
 
 /* +++++++++++ add.html ++++++++++++ */
-.add-form-container{
+#add-form-container{
   width: 100%;
   padding: 0;
   margin: 0;
 }
-.add-form-container hr {
+#add-form-container hr {
   display: none;
 }
 
@@ -1214,4 +1215,4 @@ form {
 /* hamburger menu ends */
 }
 
-/* responsive ends */
+/* responsive ends */ 
