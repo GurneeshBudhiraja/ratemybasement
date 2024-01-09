@@ -74,7 +74,8 @@ def submit():
         if request.method == "GET":
             return redirect("/")
         elif request.method == "POST":
-            address = (request.form.get("address")).strip().title()
+            # address = (request.form.get("address")).strip().title()
+            address = helpers.format_address((request.form.get("address")).strip().title())
             print(address)
             input_search = (
                 Reviews.query.filter_by(address=address)
@@ -100,7 +101,7 @@ def submit():
 def add():
     try:
         if request.method == "POST":
-            address = session.get("address")
+            address = helpers.format_address(session.get("address"))
             return render_template("add.html", address=address, api=api)
         else:
             return redirect("/")
@@ -109,7 +110,7 @@ def add():
         return redirect("/")
 
 
-# route triggered after the submit button on the new review form
+#fired after the submit button on the new review form
 @app.route("/new_review", methods=["GET", "POST"])
 def new_review():
     try:
@@ -126,12 +127,10 @@ def new_review():
             }
             print(form_data)
             data_checked = helpers.check_data(form_data)
-            # print(data_checked)
             if data_checked:
                 data_prepared = helpers.prepare_data(form_data)
                 print(data_prepared)
                 insert_response = insert_data(data_prepared)
-
                 if insert_response:
                     print("200")
                 else:
