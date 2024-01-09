@@ -12,7 +12,7 @@ import helpers
 load_dotenv()
 # address API
 
-#for address api
+# for address api
 api = os.getenv("SECRET_KEY")
 
 # configure application
@@ -76,7 +76,9 @@ def submit():
             return redirect("/")
         elif request.method == "POST":
             # address = (request.form.get("address")).strip().title()
-            address = helpers.format_address((request.form.get("address")).strip().title())
+            address = helpers.format_address(
+                (request.form.get("address")).strip().title()
+            )
             print(address)
             input_search = (
                 Reviews.query.filter_by(address=address)
@@ -111,7 +113,7 @@ def add():
         return redirect("/")
 
 
-#fired after the submit button on the new review form
+# fired after the submit button on the new review form
 @app.route("/new_review", methods=["GET", "POST"])
 def new_review():
     try:
@@ -198,8 +200,6 @@ def method_not_allowed(error):
     return redirect("/")
 
 
-
 if __name__ == "__main__":
     command = "gunicorn -w 4 -b 0.0.0.0:5500 -t 60 your_app_module:app"
     app.run(debug=True)
- 

@@ -2,13 +2,15 @@ import re
 import requests
 import os
 from dotenv import load_dotenv
+
 # regex for valid address pattern
 pattern = re.compile(r"""^(?=.*\d)[a-zA-Z0-9, "']+$""")
 
 load_dotenv()
 
-#for address validation api
+# for address validation api
 google_api = os.getenv("GOOGLE_API")
+
 
 def main():
     # sample data passed to the functions
@@ -118,18 +120,15 @@ def prepare_data(form_data):
         return form_data
     else:
         return False
-def format_address(address):
-    url = f"https://addressvalidation.googleapis.com/v1:validateAddress?key={google_api}"
 
-    data = {
-        "address": {
-            "regionCode": "CA",
-            "addressLines": [address]
-        }
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
+
+def format_address(address):
+    url = (
+        f"https://addressvalidation.googleapis.com/v1:validateAddress?key={google_api}"
+    )
+
+    data = {"address": {"regionCode": "CA", "addressLines": [address]}}
+    headers = {"Content-Type": "application/json"}
 
     response = requests.post(url, json=data, headers=headers)
 
@@ -138,7 +137,8 @@ def format_address(address):
         formatted_address = result["result"]["address"]["formattedAddress"]
         return formatted_address
     else:
-        return(f"Error: {response.status_code}")
+        return f"Error: {response.status_code}"
+
 
 if __name__ == "__main__":
     main()
