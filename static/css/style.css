@@ -482,12 +482,6 @@ html, body {
 #p-else span{
   font-weight: 700;
   font-size: 1.4rem;
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
-  -webkit-text-decoration-style: wavy;
-          text-decoration-style: wavy;
-  -webkit-text-decoration-color: var(--text-color);
-          text-decoration-color: var(--text-color);
 }
 #result-button {
   display: -webkit-box;
@@ -1128,7 +1122,6 @@ form {
 }
 #not-found p {
   font-size: 2rem;
-  /* text-shadow: 0.1rem 0.1rem 0.4rem #00000080; */
 }
 #not-found button {
   font-weight: 700;
@@ -1276,3 +1269,5 @@ form {
 }
 
 /* responsive ends */ 
+
+
