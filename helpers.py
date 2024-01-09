@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 pattern = re.compile(r"""^(?=.*\d)[a-zA-Z0-9, "']+$""")
 
 load_dotenv()
+
+#for address validation api
 google_api = os.getenv("GOOGLE_API")
 
 def main():
