@@ -1,4 +1,5 @@
 # RateMyBasement Web App
+- The web app is hosted on this URL: https://ratemybasement.onrender.com/
 - RateMyBasement is a user-friendly web app designed for address search, reviews, and community engagement.
 - Users can easily search for their addresses, add reviews, and contribute to a community-driven platform for rental reviews.
 ## Features
