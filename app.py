@@ -75,11 +75,9 @@ def submit():
         if request.method == "GET":
             return redirect("/")
         elif request.method == "POST":
-            # address = (request.form.get("address")).strip().title()
             address = helpers.format_address(
                 (request.form.get("address")).strip().title()
             )
-            print(address)
             input_search = (
                 Reviews.query.filter_by(address=address)
                 .order_by(Reviews.id.desc())
@@ -104,6 +102,8 @@ def submit():
 def add():
     try:
         if request.method == "POST":
+            if not (session.get("address")):
+                return render_template("add.html", address="", api=api)
             address = helpers.format_address(session.get("address"))
             return render_template("add.html", address=address, api=api)
         else:

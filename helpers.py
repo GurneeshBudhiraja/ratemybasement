@@ -137,7 +137,7 @@ def format_address(address):
         formatted_address = result["result"]["address"]["formattedAddress"]
         return formatted_address
     else:
-        return f"Error: {response.status_code}"
+        print(f"Error: {response.status_code}")
 
 
 if __name__ == "__main__":
