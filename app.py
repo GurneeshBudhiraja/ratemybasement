@@ -163,7 +163,6 @@ def signup():
 def login():
     return render_template("wip.html")
 
-
 # for inserting data
 def insert_data(data_prepared):
     try:
