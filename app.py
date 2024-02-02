@@ -75,9 +75,12 @@ def submit():
         if request.method == "GET":
             return redirect("/")
         elif request.method == "POST":
-            address = helpers.format_address(
-                (request.form.get("address")).strip().title()
-            )
+            #address by the user
+            entered_address = (request.form.get("address")).strip().title()
+            # print(f"entered_address is {entered_address}") For Debugging Only
+            #formatted address
+            address = helpers.format_address(entered_address)
+            # print(f"formatted address {address}") For Debugging Only  
             input_search = (
                 Reviews.query.filter_by(address=address)
                 .order_by(Reviews.id.desc())
@@ -132,7 +135,7 @@ def new_review():
             data_checked = helpers.check_data(form_data)
             if data_checked:
                 data_prepared = helpers.prepare_data(form_data)
-                print(data_prepared)
+                # print(data_prepared)
                 insert_response = insert_data(data_prepared)
                 if insert_response:
                     print("200")

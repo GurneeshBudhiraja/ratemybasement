@@ -135,10 +135,10 @@ def format_address(address):
     if response.status_code == 200:
         result = response.json()
         formatted_address = result["result"]["address"]["formattedAddress"]
+        print(f"helpers address is {formatted_address}")
         return formatted_address
     else:
         print(f"Error: {response.status_code}")
-
 
 if __name__ == "__main__":
     main()

@@ -4,8 +4,22 @@
 {% block title %} Rate My Basement {% endblock title %}
 
 {% block body %}
+<main">
 
-<main>
+  <!-- copy link div -->
+  <div class="copy-div">
+    <i class="fa-solid fa-xmark copy-cross"></i>
+    <div class="copy-content">
+      <div class="copy-first">Share with your friends</div>
+      <div class="copy-second">
+        <input id="copy-link" value="https://ratemybasement.onrender.com/">
+        <button>
+          <i class="fa-regular fa-copy copy-button"></i>
+        </button>
+      </div>
+      <div id="copy-link-title">Copy Link</div>
+    </div>
+  </div>
   <div id="middle-content">
     <img src="/static/images/yellowbg.jpg" alt="background image" id="bg-image">
     <div id="on-image">
@@ -91,6 +105,8 @@
 
 {% endblock body %}
 {% block javascript %}
+<!-- for copying into the clipboard -->
+<script src="dist/clipboard.min.js"></script>
 <script src="{{ url_for('static',filename='js/script.js') }}"></script>
 <script type="text/javascript">
   Radar.initialize('{{ api }}');

@@ -73,3 +73,5 @@ searchButton.addEventListener('click',()=> {
     searchButtonClicked=false;
   }
 });
+// copying elements on the clipboard
+new ClipboardJS('.btn');
