@@ -165,6 +165,7 @@ html, body {
   letter-spacing: 0.15rem;
   padding: 1.25rem 0;
   text-align: center;
+  z-index: 105;
 }
 .confirmation-message{
   position: absolute;
