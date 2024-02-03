@@ -1,9 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
 
 :root {
   --text-color: #ff9800;
@@ -45,27 +39,43 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   position: relative;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .copy-div{
   position: absolute;
-  width: 95%;
+  width: 70%;
   height: 20%;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
-  z-index: 100;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+  z-index: 1000;
   background: rgba(255, 255, 255, 0.404);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  -webkit-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+          box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 10px );
   -webkit-backdrop-filter: blur( 10px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .copy-cross{
   position: absolute;
@@ -77,22 +87,37 @@ html, body {
 }
 .copy-content{
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items:center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align:center;
+      -ms-flex-align:center;
+          align-items:center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 0.7rem;
 }
 .copy-first{
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 2.15rem;
   color: black;
   text-shadow: 0.1rem 0.1rem 0.1rem white;
 }
 .copy-second{
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 0.1rem;
   text-wrap: nowrap;  
   border: 0.12rem solid black;
@@ -100,15 +125,17 @@ html, body {
   background-color: white;
 }
 .copy-link{
-  font-size: 1.15rem;
+  text-align: center;
+  font-size: 1.32rem;
   padding: 0.15rem 0.25rem;
   width: 100%;
   color: var(--black);
   outline: none;
+  font-weight: 700;
 }
 .copy-second button{
   height: 100%;
-  padding: 0.25rem;
+  padding: 0.5rem;
   border-left: 1px solid black;
   background-color: transparent;
   color: var(--black);
@@ -121,11 +148,18 @@ html, body {
   color: var(--black);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  transform: translateX(-50%);
-  width: 80%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 40%;
   display: none;
-  justify-content: center;
-  align-items: center;
+  font-size: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 2rem;
   font-weight: 700;
   letter-spacing: 0.15rem;
@@ -134,15 +168,26 @@ html, body {
 }
 .confirmation-message{
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-weight: 700;
   letter-spacing: 0.1rem;
   z-index: 100;
-  left: 0;
-  width: 100%;
+  width: 70%;
+  height: 8%;
   top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+
 }
 #index-nav {
   background-color: transparent;
@@ -712,8 +757,8 @@ html, body {
           align-items: center;
   font-size: 1.3rem;
   padding: 2rem 1rem;
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#ff9900), to(#ff990063));
   background-image: -o-linear-gradient(bottom, #ff9900, #ff990063);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#ff9900), to(#ff990063));
   background-image: linear-gradient(to top, #ff9900, #ff990063);
 }
 .add-nav a {
@@ -1364,8 +1409,62 @@ form {
 }
 
 /* hamburger menu ends */
+
+/* copy-div */
+.copy-div{
+  width: 95%;
+}
+.copy-cross{
+  position: absolute;
+  right: 18px;
+  color: white;
+  top: 12px;
+  font-size: 1.45rem;
+  cursor: pointer;
+}
+.copy-content{
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align:center;
+      -ms-flex-align:center;
+          align-items:center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 0.5rem;
+}
+.copy-first{
+  font-size: 1.15rem;
+} 
+.copy-second{
+  width: auto;
+}
+.copy-link{
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.copy-second button{
+  padding: 0.25rem;
+}
+.link-copied{
+  width: 80%;
+  font-size: 1rem;
+}
+.confirmation-message{
+  left: 0;
+  width: 100%;
+  -webkit-transform: translate(0,0);
+      -ms-transform: translate(0,0);
+          transform: translate(0,0);
+}
 }
 
 /* responsive ends */ 
-
-

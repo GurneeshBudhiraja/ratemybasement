@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for,flash
 from flask_session import Session
 from datetime import date
 from flask_sqlalchemy import SQLAlchemy
@@ -62,8 +62,10 @@ def after_request(response):
 @app.route("/", methods=["GET"])
 def index():
     try:
+        show=False
         if request.method == "GET":
-            return render_template("index.html", api=api)
+            show = request.args.get("show", default=False, type=int)
+            return render_template("index.html", api=api,show=show)
         else:
             print("Error(index): POST")
     except Exception as e:
@@ -118,7 +120,7 @@ def add():
         return redirect("/")
 
 
-# fired after the submit button on the new review form
+#fired after the submit button on the new review form
 @app.route("/new_review", methods=["GET", "POST"])
 def new_review():
     try:
@@ -135,25 +137,28 @@ def new_review():
             }
             print(form_data)
             data_checked = helpers.check_data(form_data)
-            show=True
+            show=True #showing the copy div
             if data_checked:
                 data_prepared = helpers.prepare_data(form_data)
                 # print(data_prepared)
                 insert_response = insert_data(data_prepared)
                 if insert_response:
-                    added=True
                     print("200") #for logs
-                    return render_template("index.html",added=added, show=show)
+                    #flash message
+                    flash("Review Has Been Added!","success")
                 else:
-                    added=False
                     # not completed
                     print("501") #for logs
-                    return render_template("index.html",added=added,show=show)
+                    #flash message 
+                    flash("Review not added. Please try again.","danger")
             else:
                 # not completed
                 print("501") #for logs
-                added=False
-                return render_template("index.html",added=added,show=show)
+                print(f"show is {show}")
+                #flash message 
+                flash("Review not added. Please try again.","danger")
+
+            return redirect(url_for("index",show=int(show)))
         else:
             return redirect("/")
 

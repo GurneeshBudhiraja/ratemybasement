@@ -1,42 +1,39 @@
-
 {% extends 'base.html'%}
 
 {% block title %} Rate My Basement {% endblock title %}
 
 {% block body %}
 <main">
-
-  <!-- copy link div -->
-  <!-- only to show after the user has added the review -->
-  {% if show %}  
-    <div class="copy-div">
-      <i class="fa-solid fa-xmark copy-cross"></i>
-      <div class="copy-content">
-        <div class="copy-first">Share with your friends</div>
-        <div class="copy-second">
-          <input class="copy-link" value="https://ratemybasement.onrender.com/" disabled>
-          <button class="copy-btn">
-            <i class="fa-regular fa-copy copy-button"></i>
-          </button>
+  <!-- Link Copy -->
+    {% if show %}  
+      <div class="copy-div">
+        <i class="fa-solid fa-xmark copy-cross"></i>
+        <div class="copy-content">
+          <div class="copy-first">Share with friends</div>
+          <div class="copy-second">
+            <input class="copy-link" value="https://ratemybasement.onrender.com/" disabled>
+            <button class="copy-btn">
+              <i class="fa-regular fa-copy copy-button"></i>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  {% endif %}
-    <!-- Link Copied Message -->
+    {% endif %}
     <div class="alert alert-primary link-copied" role="alert">
       Link Copied!
     </div>
-    {% if added==True %}
-    <!-- Success Message -->
-    <div class="alert alert-success confirmation-message" role="alert">
-      Review Has Been Added! 
-    </div>
-    {% elif added==False %}
-
-    <div class="alert alert-danger confirmation-message" role="alert">
-      Review not added. Please try again.
-    </div>
-    {% endif %}
+    <!-- alert message -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for message in messages %}
+        {% set category, content = message %}
+        {% if loop.index == 1 %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show confirmation-message" role="alert">
+          {{ content }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endwith %}
   <div id="middle-content">
     <img src="/static/images/yellowbg.jpg" alt="background image" id="bg-image">
     <div id="on-image">
@@ -55,31 +52,34 @@
       <form action="submit" method="POST" autocomplete="off">
         <div id="search-container">
           <h5>Search for Rental Reviews Over Here</h5>
-          <input type="address" name="address" autofocus placeholder="Type your address" required class="search-bar" id="autocomplete" >
+          <input type="address" name="address" autofocus placeholder="Type your address" required class="search-bar"
+            id="autocomplete">
           <button id="submit">Submit</button>
-        </div>  
+        </div>
       </form>
     </div>
     <div id="credits">
-      <a href="https://www.freepik.com/free-photo/yellow-light-background-with-sunset-projector-lamp_16010725.htm#page=3&query=yellow%20room%20background&position=4&from_view=search&track=ais&uuid=94017c7f-fe65-4a1d-b20a-0e2e64973699">Image by rawpixel.com</a> on Freepik
+      <a
+        href="https://www.freepik.com/free-photo/yellow-light-background-with-sunset-projector-lamp_16010725.htm#page=3&query=yellow%20room%20background&position=4&from_view=search&track=ais&uuid=94017c7f-fe65-4a1d-b20a-0e2e64973699">Image
+        by rawpixel.com</a> on Freepik
     </div>
     <nav>
       <div class="hamburger-menu">
         <span class="material-symbols-outlined cross">
-        close
+          close
         </span>
         <div class="links">
-        <a href="{{ url_for('login') }}">Login</a>
-      </div>
-        <div class="links">
-        <a href="{{ url_for('signup') }}">Sign Up</a>
+          <a href="{{ url_for('login') }}">Login</a>
         </div>
-      </div>  
+        <div class="links">
+          <a href="{{ url_for('signup') }}">Sign Up</a>
+        </div>
+      </div>
       <div class="add-nav" id="index-nav">
         <div class="left"></div>
         <div class="right">
           <div class="login">
-          <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('login') }}">Login</a>
           </div>
           <div class="menu">
             <span class="material-symbols-outlined">menu</span>
@@ -90,12 +90,12 @@
         </div>
       </div>
     </nav>
-  </div> 
-    <!--middle content ends -->
+  </div>
+  <!--middle content ends -->
   <div id="lower">
     <div id="lower-heading">
       <h3>For <span>Renters</span>, By a <span>Renter</span></h3>
-      <h4 >Our Mission</h4>
+      <h4>Our Mission</h4>
     </div>
   </div>
   <div id="features">
@@ -118,15 +118,15 @@
       <button id="cta-button">Rate your rental!</button>
     </form>
   </div>
-</main>
+  </main>
 
-{% endblock body %}
-{% block javascript %}
-<script src="{{ url_for('static',filename='js/script.js') }}"></script>
-<script type="text/javascript">
-  Radar.initialize('{{ api }}');
-  Radar.ui.autocomplete({
-  });
-  
-</script>
-{% endblock javascript %}
+  {% endblock body %}
+  {% block javascript %}
+  <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+  <script type="text/javascript">
+    Radar.initialize('{{ api }}');
+    Radar.ui.autocomplete({
+    });
+
+  </script>
+  {% endblock javascript %}

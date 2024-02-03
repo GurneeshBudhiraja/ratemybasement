@@ -17,7 +17,8 @@ const copyBtn = document.querySelector(".copy-btn");
 const copyValue = document.querySelector(".copy-link");
 const copyCross = document.querySelector(".copy-cross");
 const copyAlert = document.querySelector(".link-copied");
-
+//flash message
+const confirmationMessage = document.querySelector(".confirmation-message");
 // like button feature
 for (const button of likeButton) {
   let buttonClicked = false;
@@ -96,7 +97,6 @@ async function copyDivDisplay() {
   const showingDiv= await showCopyDiv(); //showing copy div
   const removingDiv = await removeCopyDiv(); // copy div
 }
-copyDivDisplay();
 function showCopyDiv() {
   return new Promise((resolve)=>{
     setTimeout(() => {
@@ -109,9 +109,12 @@ function removeCopyDiv() {
   return new Promise((resolve)=>{
 
     setTimeout(() => {
-        copyDiv.style.display="none";
-        copyAlert.style.display="none";
+      copyDiv.style.display="none";  
+      copyAlert.style.display="none";
       resolve("display set to none");
     }, 5000);
   });
 }
+
+// copy functionality
+copyDivDisplay();
