@@ -56,13 +56,13 @@ html, body {
   top: 50%;
   transform: translate(-50%,-50%);
   z-index: 100;
-  background: rgba( 255, 255, 255, 0.25 );
+  background: rgba(255, 255, 255, 0.404);
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 10px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -86,31 +86,63 @@ html, body {
 }
 .copy-first{
   font-weight: 700;
+  font-size: 1.15rem;
   color: black;
+  text-shadow: 0.1rem 0.1rem 0.1rem white;
 }
 .copy-second{
   display: flex;
   align-items: center;
   gap: 0.1rem;
-  text-wrap: nowrap;
+  text-wrap: nowrap;  
+  border: 0.12rem solid black;
+  font-weight: 600;
+  background-color: white;
 }
-.copy-second button{
-  height: 100%;
-  padding: 0.15rem;
-  background-color: var(--black);
-  color: var(--white);
-}
-#copy-link{
+.copy-link{
   font-size: 1.15rem;
   padding: 0.15rem 0.25rem;
   width: 100%;
-  color: var(--text-color);
-  background-color: black;
+  color: var(--black);
   outline: none;
 }
-#copy-link-title{
-  color: black;
-  font-size: 1.05rem;
+.copy-second button{
+  height: 100%;
+  padding: 0.25rem;
+  border-left: 1px solid black;
+  background-color: transparent;
+  color: var(--black);
+}
+.link-copied{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background-color: #ffa600b7;
+  color: var(--black);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  transform: translateX(-50%);
+  width: 80%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  padding: 1.25rem 0;
+  text-align: center;
+}
+.confirmation-message{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  z-index: 100;
+  left: 0;
+  width: 100%;
+  top: 0;
 }
 #index-nav {
   background-color: transparent;

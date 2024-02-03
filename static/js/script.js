@@ -11,6 +11,12 @@ let searchButtonClicked = false; //to check whether button is clicked or not
 const typingText = document.querySelector('#typing-text');
 const onImage = document.querySelector('#on-image');
 const onHouse = document.querySelector('#on-house');
+// copy button
+const copyDiv = document.querySelector(".copy-div");
+const copyBtn = document.querySelector(".copy-btn");
+const copyValue = document.querySelector(".copy-link");
+const copyCross = document.querySelector(".copy-cross");
+const copyAlert = document.querySelector(".link-copied");
 
 // like button feature
 for (const button of likeButton) {
@@ -74,4 +80,38 @@ searchButton.addEventListener('click',()=> {
   }
 });
 // copying elements on the clipboard
-new ClipboardJS('.btn');
+copyBtn.addEventListener('click',async ()=>{
+  try {
+    await navigator.clipboard.writeText(copyValue.value);
+    copyAlert.style.display="flex";
+  } catch (error) {
+    console.log(error)
+  }
+})
+//remove copy div
+copyCross.addEventListener('click',()=>{
+  copyDiv.style.display="none";
+})
+async function copyDivDisplay() {
+  const showingDiv= await showCopyDiv(); //showing copy div
+  const removingDiv = await removeCopyDiv(); // copy div
+}
+copyDivDisplay();
+function showCopyDiv() {
+  return new Promise((resolve)=>{
+    setTimeout(() => {
+      copyDiv.style.display="flex";
+      resolve("display set to flex");
+    }, 1000);
+  });
+}
+function removeCopyDiv() {
+  return new Promise((resolve)=>{
+
+    setTimeout(() => {
+        copyDiv.style.display="none";
+        copyAlert.style.display="none";
+      resolve("display set to none");
+    }, 5000);
+  });
+}

@@ -9,11 +9,13 @@ from datetime import date
 import helpers
 
 # env variables
-load_dotenv()
+# load_dotenv()   
 # address API
 
+
 # for address api
-api = os.getenv("SECRET_KEY")
+api = os.environ.get('RADAR_KEY')
+print(api)
 
 # configure application
 app = Flask(__name__)
@@ -133,20 +135,25 @@ def new_review():
             }
             print(form_data)
             data_checked = helpers.check_data(form_data)
+            show=True
             if data_checked:
                 data_prepared = helpers.prepare_data(form_data)
                 # print(data_prepared)
                 insert_response = insert_data(data_prepared)
                 if insert_response:
-                    print("200")
+                    added=True
+                    print("200") #for logs
+                    return render_template("index.html",added=added, show=show)
                 else:
+                    added=False
                     # not completed
-                    print("501")
-                return redirect("/")
+                    print("501") #for logs
+                    return render_template("index.html",added=added,show=show)
             else:
                 # not completed
-                print("501")
-            return redirect("/")
+                print("501") #for logs
+                added=False
+                return render_template("index.html",added=added,show=show)
         else:
             return redirect("/")
 
@@ -169,7 +176,7 @@ def login():
 # for inserting data
 def insert_data(data_prepared):
     try:
-        print(data_prepared)
+        print(data_prepared) #for logs
         new_review = Reviews(
             address=data_prepared["address"],
             rent=data_prepared["rent"],
