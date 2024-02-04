@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, redirect, session, url_for,flash
+from flask import Flask, render_template, request, redirect, session, url_for, flash
 from flask_session import Session
 from datetime import date
 from flask_sqlalchemy import SQLAlchemy
@@ -8,21 +8,15 @@ import sqlite3
 from datetime import date
 import helpers
 
-# env variables
-# load_dotenv()   
-# address API
-
-
-# for address api
-api = os.environ.get('RADAR_KEY')
-print(api)
+# Radar address api
+api = os.environ.get("RADAR_KEY")
 
 # configure application
 app = Flask(__name__)
 
 # making db
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DB_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("URL_DB")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
@@ -62,10 +56,10 @@ def after_request(response):
 @app.route("/", methods=["GET"])
 def index():
     try:
-        show=False
+        show = False
         if request.method == "GET":
             show = request.args.get("show", default=False, type=int)
-            return render_template("index.html", api=api,show=show)
+            return render_template("index.html", api=api, show=show)
         else:
             print("Error(index): POST")
     except Exception as e:
@@ -79,12 +73,12 @@ def submit():
         if request.method == "GET":
             return redirect("/")
         elif request.method == "POST":
-            #address by the user
+            # address by the user
             entered_address = (request.form.get("address")).strip().title()
             # print(f"entered_address is {entered_address}") For Debugging Only
-            #formatted address
+            # formatted address
             address = helpers.format_address(entered_address)
-            # print(f"formatted address {address}") For Debugging Only  
+            # print(f"formatted address {address}") For Debugging Only
             input_search = (
                 Reviews.query.filter_by(address=address)
                 .order_by(Reviews.id.desc())
@@ -97,10 +91,11 @@ def submit():
             return render_template(
                 "result.html", input_search=input_search, a=session["address"]
             )
-        else:
-            return redirect("/")
+        # else:
+        #     return redirect("/")
     except Exception as e:
         db.session.rollback()
+        print(e)
         return redirect("/")
 
 
@@ -111,7 +106,7 @@ def add():
         if request.method == "POST":
             if not (session.get("address")):
                 return render_template("add.html", address="", api=api)
-            address = helpers.format_address(session.get("address"))
+            address = session.get("address")
             return render_template("add.html", address=address, api=api)
         else:
             return redirect("/")
@@ -120,7 +115,7 @@ def add():
         return redirect("/")
 
 
-#fired after the submit button on the new review form
+# fired after the submit button on the new review form
 @app.route("/new_review", methods=["GET", "POST"])
 def new_review():
     try:
@@ -135,30 +130,34 @@ def new_review():
                 "neighbourhood": request.form.get("neighbourhood"),
                 "review": request.form.get("review"),
             }
+            if session.get("address"):
+                form_data["address"] = session.get("address")
+            else:
+                form_data["address"] = helpers.format_address(form_data["address"])
             print(form_data)
             data_checked = helpers.check_data(form_data)
-            show=True #showing the copy div
+            show = True  # showing the copy div
             if data_checked:
                 data_prepared = helpers.prepare_data(form_data)
                 # print(data_prepared)
                 insert_response = insert_data(data_prepared)
                 if insert_response:
-                    print("200") #for logs
-                    #flash message
-                    flash("Review Has Been Added!","success")
+                    print("200")  # for logs
+                    # flash message
+                    flash("Review Has Been Added!", "success")
                 else:
                     # not completed
-                    print("501") #for logs
-                    #flash message 
-                    flash("Review not added. Please try again.","danger")
+                    print("501")  # for logs
+                    # flash message
+                    flash("Review not added. Please try again.", "danger")
             else:
                 # not completed
-                print("501") #for logs
+                print("501")  # for logs
                 print(f"show is {show}")
-                #flash message 
-                flash("Review not added. Please try again.","danger")
+                # flash message
+                flash("Review not added. Please try again.", "danger")
 
-            return redirect(url_for("index",show=int(show)))
+            return redirect(url_for("index", show=int(show)))
         else:
             return redirect("/")
 
@@ -178,10 +177,11 @@ def signup():
 def login():
     return render_template("wip.html")
 
+
 # for inserting data
 def insert_data(data_prepared):
     try:
-        print(data_prepared) #for logs
+        print(data_prepared)  # for logs
         new_review = Reviews(
             address=data_prepared["address"],
             rent=data_prepared["rent"],

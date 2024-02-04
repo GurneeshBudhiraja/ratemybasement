@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 pattern = re.compile(r"""^(?=.*\d)[a-zA-Z0-9, "']+$""")
 
 load_dotenv()
-
 # for address validation api
 google_api = os.getenv("GOOGLE_API")
 
@@ -105,7 +104,7 @@ def prepare_data(form_data):
                 form_data[key] = str(form_data[key])
     # formatting the data in a form of dictionary
     form_data = {
-        "address": format_address(form_data["address"].strip().title()),
+        "address": form_data["address"].strip().title(),
         "rent": form_data["rent"],
         "years": form_data["years"],
         "clean": form_data["clean"].strip().title(),
@@ -114,12 +113,7 @@ def prepare_data(form_data):
         "neighbourhood": form_data["neighbourhood"].strip().title(),
         "review": form_data["review"].strip().capitalize(),
     }
-
-    # checking again
-    if check_data(form_data):
-        return form_data
-    else:
-        return False
+    return form_data
 
 
 def format_address(address):
@@ -135,10 +129,12 @@ def format_address(address):
     if response.status_code == 200:
         result = response.json()
         formatted_address = result["result"]["address"]["formattedAddress"]
-        print(f"helpers address is {formatted_address}")
+        print(1)
+        print(f"formatted address is {formatted_address}")
         return formatted_address
     else:
         print(f"Error: {response.status_code}")
+
 
 if __name__ == "__main__":
     main()
